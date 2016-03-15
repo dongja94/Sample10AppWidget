@@ -3,6 +3,7 @@ package com.example.dongja94.sampleappwidget;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.RemoteViews;
 
 /**
@@ -33,12 +34,12 @@ public class MyAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
+        context.startService(new Intent(context, WidgetUpdateService.class));
     }
 
     @Override
     public void onDisabled(Context context) {
-        // Enter relevant functionality for when the last widget is disabled
+        context.stopService(new Intent(context, WidgetUpdateService.class));
     }
 
     @Override
